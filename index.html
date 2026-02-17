@@ -3,96 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile | Vignesh V</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Vignesh V - Biodata</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Lato:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.7;
+            padding: 30px 20px;
         }
-        .profile-card {
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
             background: white;
-            border-radius: 30px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+            animation: slideIn 0.6s ease-out;
         }
-        .accent-line {
-            height: 4px;
-            width: 50px;
-            background: #3b82f6;
-            border-radius: 2px;
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 35px;
+            text-align: center;
+            border-bottom: 4px solid #e74c3c;
+        }
+
+        .header-name {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .header-title {
+            font-size: 1.1em;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            opacity: 0.95;
+        }
+
+        .header-subtitle {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Quick Contact Bar */
+        .quick-contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            background: #ecf0f1;
+            font-size: 0.9em;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #2c3e50;
+        }
+
+        .contact-item strong {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 35px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 32px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        .section-icon {
+            font-size: 1.3em;
+            color: #e74c3c;
+        }
+
+        .section-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        /* Two Column Layout for Personal & Family */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 32px;
+        }
+
+        /* Info Items */
+        .info-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #2c3e50;
+            width: 140px;
+            text-transform: capitalize;
+            font-size: 0.9em;
+            letter-spacing: 0.3px;
+        }
+
+        .info-label::after {
+            content: " :";
+        }
+
+        .info-value {
+            color: #333;
+            flex: 1;
+            padding-left: 20px;
+            font-weight: 500;
+        }
+
+        /* Education & Experience Items */
+        .item-block {
+            margin-bottom: 18px;
+            padding: 12px 0;
+            border-left: 3px solid #e74c3c;
+            padding-left: 15px;
+        }
+
+        .item-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1em;
+            margin-bottom: 3px;
+        }
+
+        .item-subtitle {
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 2px;
+        }
+
+        .item-meta {
+            color: #888;
+            font-size: 0.85em;
+            font-style: italic;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        /* Languages */
+        .languages-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .language-item {
+            background: #ecf0f1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: #2c3e50;
+            font-weight: 500;
+            border-left: 3px solid #e74c3c;
+        }
+
+        /* Footer Address */
+        .address-box {
+            background: #f8f8f8;
+            padding: 15px;
+            border-left: 4px solid #e74c3c;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                box-shadow: none;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header-name {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 25px;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .quick-contact {
+                gap: 15px;
+                font-size: 0.85em;
+            }
+
+            .section-title {
+                font-size: 1.2em;
+            }
+
+            .info-label {
+                min-width: 100px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .header {
+                padding: 25px;
+            }
+
+            .content {
+                padding: 25px;
+            }
         }
     </style>
 </head>
-<body class="flex items-center justify-center p-4">
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="header-name">VIGNESH V</h1>
+            <p class="header-title">IT Professional</p>
+        </div>
 
-    <div class="profile-card max-w-4xl w-full overflow-hidden">
-        <div class="bg-gradient-to-b from-blue-100 to-blue-50 p-12 text-center">
-            <div class="relative inline-block">
-                <div class="w-40 h-40 rounded-full border-4 border-blue-500 mx-auto object-cover bg-white flex items-center justify-center text-7xl text-slate-300">
-                    <i class="fas fa-user"></i>
-                </div>
+        <!-- Quick Contact -->
+        <div class="quick-contact">
+            <div class="contact-item">
+                <span>📧</span>
+                <strong>Email:</strong> vignesviswa10@gmail.com
             </div>
-            <h1 class="text-4xl font-bold text-slate-900 mt-6 tracking-wide">VIGNESH V</h1>
-            <p class="text-slate-600 font-semibold text-lg mt-2">IT Professional</p>
-            <div class="flex justify-center mt-4">
-                <div class="accent-line"></div>
+            <div class="contact-item">
+                <span>📱</span>
+                <strong>Phone:</strong> +91 6282400503
+            </div>
+            <div class="contact-item">
+                <span>📍</span>
+                <strong>Location:</strong> Palakkad, Kerala
             </div>
         </div>
 
-        <div class="p-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <div class="flex items-center space-x-4">
-                <div class="text-blue-600 bg-blue-50 p-4 rounded-xl flex-shrink-0">
-                    <i class="fas fa-briefcase text-2xl"></i>
+        <!-- Content -->
+        <div class="content">
+            <!-- Personal Details & Family Background -->
+            <div class="two-column">
+                <!-- Personal Details -->
+                <div class="section">
+                    <div class="section-header">
+                        <span class="section-icon">👤</span>
+                        <h2 class="section-title">Personal Details</h2>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Date of Birth</div>
+                        <div class="info-value">November 14, 1996</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Age</div>
+                        <div class="info-value">29 years</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Gender</div>
+                        <div class="info-value">Male</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Marital Status</div>
+                        <div class="info-value">Single</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Religion</div>
+                        <div class="info-value">Hindu</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Nationality</div>
+                        <div class="info-value">Indian</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Languages</div>
+                        <div class="info-value">English, Tamil, Malayalam</div>
+                    </div>
                 </div>
-                <div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Designation</p>
-                    <p class="text-lg font-semibold text-slate-800">Junior Technical Superintendent (CSE)</p>
+
+                <!-- Family Background -->
+                <div class="section">
+                    <div class="section-header">
+                        <span class="section-icon">👨‍👩‍👧</span>
+                        <h2 class="section-title">Family Background</h2>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Father</div>
+                        <div class="info-value">Mr. Viswanathan R</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Occupation</div>
+                        <div class="info-value">Driver</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Mother</div>
+                        <div class="info-value">Ms. Karppakam P</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Sibling</div>
+                        <div class="info-value">Ms. Vinitha V (Sister)</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Education</div>
+                        <div class="info-value">M.Com Finance</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Marital Status</div>
+                        <div class="info-value">Married</div>
+                    </div>
+                    <div class="info-row">
+                        <div class="info-label">Location</div>
+                        <div class="info-value">Palakkad, Kerala</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="flex items-center space-x-4">
-                <div class="text-indigo-600 bg-indigo-50 p-4 rounded-xl flex-shrink-0">
-                    <i class="fas fa-university text-2xl"></i>
+            <!-- Education -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">🎓</span>
+                    <h2 class="section-title">Educational Qualification</h2>
                 </div>
-                <div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Organization</p>
-                    <p class="text-lg font-semibold text-slate-800">Indian Institute of Technology Palakkad</p>
+                <div class="item-block">
+                    <div class="item-title">Bachelor of Computer Applications (BCA)</div>
+                    <div class="item-subtitle">Indira Gandhi National Open University (IGNOU)</div>
                 </div>
-            </div>
-
-            <div class="flex items-center space-x-4">
-                <div class="text-emerald-600 bg-emerald-50 p-4 rounded-xl flex-shrink-0">
-                    <i class="fas fa-calendar-alt text-2xl"></i>
-                </div>
-                <div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-tighter">Date of Birth</p>
-                    <p class="text-lg font-semibold text-slate-800">14/11/1996</p>
+                <div class="item-block">
+                    <div class="item-title">Diploma in Computer Engineering</div>
+                    <div class="item-subtitle">Government Polytechnic College, Palakkad</div>
                 </div>
             </div>
 
-            <div class="flex items-start space-x-4">
-                <div class="text-orange-600 bg-orange-50 p-4 rounded-xl flex-shrink-0">
-                    <i class="fas fa-graduation-cap text-2xl"></i>
+            <!-- Professional Experience -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">💼</span>
+                    <h2 class="section-title">Professional Experience</h2>
                 </div>
-                <div>
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-tighter mb-2">Education</p>
-                    <ul class="space-y-3">
-                        <li class="border-l-2 border-orange-200 pl-3">
-                            <p class="text-sm font-bold text-slate-800 leading-tight">Bachelor's Degree in Computer Software Engineering</p>
-                            <p class="text-xs text-slate-500 italic">IGNOU</p>
-                        </li>
-                        <li class="border-l-2 border-orange-200 pl-3">
-                            <p class="text-sm font-bold text-slate-800 leading-tight">Diploma in Computer Engineering</p>
-                            <p class="text-xs text-slate-500 italic">Govt. Polytechnic College Palakkad</p>
-                        </li>
-                    </ul>
+                <div class="item-block">
+                    <div class="item-title">Junior Technical Superintendent</div>
+                    <div class="item-subtitle">Indian Institute of Technology (IIT) Palakkad</div>
+                    <span class="badge">Current Position</span>
+                </div>
+                <div class="item-block">
+                    <div class="item-title">IT Support Engineer</div>
+                    <div class="item-subtitle">Indian Institute of Management (IIM) Kozhikode</div>
+                </div>
+                <div class="item-block">
+                    <div class="item-title">System Administrator</div>
+                    <div class="item-subtitle">Sinicon Controls Pvt. Ltd, Palakkad</div>
+                </div>
+                <div class="item-block">
+                    <div class="item-title">Computer Technician</div>
+                    <div class="item-subtitle">Travancore Cochin Chemicals Limited, Government of Kerala</div>
                 </div>
             </div>
-        </div>
-    </div>
 
-</body>
-</html>
+            <!-- Hobbies & Interests -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">🎯</span>
+                    <h2 class="section-title">Hobbies & Interests</h2>
+                </div>
+                <div class="languages-list">
+                    <div class="language-item">Mobile App Development</div>
+                    <div class="language-item">Learning New Skills</div>
+                    <div class="language-item">Watching Movies</div>
+                </div>
+            </div>
+
+            <!-- Complete Address -->
+            <div class="section">
+                <div class="section-header">
+                    <span class="section-icon">🏠</span>
+                    <h2 class="section-title">Residential Address</h2>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Full Address</div>
+                    <div class="info-value">17/666, Tharuvakkode, Kallekkad, Palakkad, Kerala - 678006, India</div>
+                </div>
+            </div>
